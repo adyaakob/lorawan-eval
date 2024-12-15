@@ -30,6 +30,8 @@ jobs:
           cp -r static public/
           cp index.html public/
           cp app.py public/
+          cp create_admin.py public/ || true
+          cp create_db.py public/ || true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
