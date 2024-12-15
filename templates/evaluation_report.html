@@ -1,0 +1,696 @@
+{% extends "base.html" %}
+
+{% block title %}LoRaWAN Worker Tracking System Evaluation Report{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h1>Evaluation Report</h1>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-clipboard-check me-2"></i>
+                        LoRaWAN Worker Tracking System Evaluation Report
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">Evaluation Overview</h4>
+                        <p>Comprehensive assessment of LoRaWAN-based real-time worker tracking system for oil palm plantations</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">Report Duration</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="startDate"><strong>Start Date:</strong></label>
+                                <input type="date" id="startDate" class="form-control mt-2" 
+                                    {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="endDate"><strong>End Date:</strong></label>
+                                <input type="date" id="endDate" class="form-control mt-2" 
+                                    {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">1. Evaluation Equipment</h4>
+                        <p>Please provide details about the equipment used during the evaluation:</p>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>End-user devices:</strong> (e.g., Dragino Tracker D LoRaWAN GPS trackers)
+                                <input type="text" class="form-control mt-2" placeholder="Enter details here" 
+                                    {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Gateway:</strong> (e.g., Dragino Outdoor Gateway DL0S86)
+                                <input type="text" class="form-control mt-2" placeholder="Enter details here" 
+                                    {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Tools/Equipment:</strong>
+                                <textarea class="form-control mt-2" rows="3" placeholder="List other tools and equipment here" 
+                                    {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">2. Test Location</h4>
+                        <p>The evaluation was conducted in the selected oil palm estate. Please specify the selected estate:</p>
+                        <div class="form-group">
+                            <label for="selectedEstate"><strong>Selected Estate:</strong></label>
+                            <input type="text" id="selectedEstate" class="form-control mt-2" placeholder="Enter the name of the selected estate here" 
+                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">3. Evaluation Procedure</h4>
+                        <div class="accordion" id="evaluationAccordion">
+                            <!-- Test 1: LoRaWAN Range and Coverage -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        Test 1: LoRaWAN Range and Coverage
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>Tracker ID</th>
+                                                        <th>Distance to Gateway (m)</th>
+                                                        <th>Tracker GPS Coordinates</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>1.1</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.2</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.3</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.4</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.5</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.6</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.7</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.8</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.9</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.10</td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>RSSI (dBm)</th>
+                                                        <th>SF</th>
+                                                        <th>Packet Loss (%)</th>
+                                                        <th>Latency (s)</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>1.1</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.5</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.6</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.7</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.8</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.9</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>1.10</td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <label for="remarksTest1">Additional Remarks or Observations:</label>
+                                            <textarea id="remarksTest1" class="form-control" rows="4" placeholder="Enter any additional remarks or observations here" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Test 2: GPS Performance Under Canopy -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        Test 2: GPS Performance Under Canopy
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>Tracker ID</th>
+                                                        <th>Canopy Density</th>
+                                                        <th>Recorded Coordinates</th>
+                                                        <th>Actual Coordinates</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>2.1</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.2</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.3</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.4</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.5</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.6</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.7</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.8</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.9</td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.10</td><td></td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>Positional Error (m)</th>
+                                                        <th>Time of Day</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>2.1</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.2</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.3</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.4</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.5</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.6</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.7</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.8</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.9</td><td></td><td></td><td></td></tr>
+                                                    <tr><td>2.10</td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <label for="remarksTest2">Additional Remarks or Observations:</label>
+                                            <textarea id="remarksTest2" class="form-control" rows="4" placeholder="Enter any additional remarks or observations here" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Test 3: Device Performance and Battery Life -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        Test 3: Device Performance and Battery Life
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>Tracker ID</th>
+                                                        <th>Data Transmission Interval (min)</th>
+                                                        <th>Data Transmission Rate</th>
+                                                        <th>Packet Loss (%)</th>
+                                                        <th>Battery Life (hours)</th>
+                                                        <th>Functional Issues</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>3.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>3.10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <label for="remarksTest3">Additional Remarks or Observations:</label>
+                                            <textarea id="remarksTest3" class="form-control" rows="4" placeholder="Enter any additional remarks or observations here" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Test 4: Cellular Signal Strength -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                        Test 4: Cellular Signal Strength
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>Location Coordinates</th>
+                                                        <th>CelcomDigi</th>
+                                                        <th>Maxis</th>
+                                                        <th>U Mobile</th>
+                                                        <th>unifi</th>
+                                                        <th>Yes 4G</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>4.1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                    <tr><td>4.10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Test Number</th>
+                                                        <th>RSRP (dBm)</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>4.1</td><td></td><td></td></tr>
+                                                    <tr><td>4.2</td><td></td><td></td></tr>
+                                                    <tr><td>4.3</td><td></td><td></td></tr>
+                                                    <tr><td>4.4</td><td></td><td></td></tr>
+                                                    <tr><td>4.5</td><td></td><td></td></tr>
+                                                    <tr><td>4.6</td><td></td><td></td></tr>
+                                                    <tr><td>4.7</td><td></td><td></td></tr>
+                                                    <tr><td>4.8</td><td></td><td></td></tr>
+                                                    <tr><td>4.9</td><td></td><td></td></tr>
+                                                    <tr><td>4.10</td><td></td><td></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <label for="remarksTest4">Additional Remarks or Observations:</label>
+                                            <textarea id="remarksTest4" class="form-control" rows="4" placeholder="Enter any additional remarks or observations here" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">4. Summary</h4>
+                        <div class="form-group">
+                            <label for="summaryTextarea">Provide a concise summary of the evaluation objectives, methodology, and key findings:</label>
+                            <textarea id="summaryTextarea" class="form-control" rows="6" placeholder="Enter summary here..." 
+                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">5. Conclusion</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Evaluation Objective</th>
+                                        <th>Findings</th>
+                                        <th>Conclusion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Assess LoRaWAN range and coverage</td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter findings here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter conclusion here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluate GPS performance under canopy</td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter findings here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter conclusion here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gather data on device performance</td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter findings here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter conclusion here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluate cellular signal strength</td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter findings here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter conclusion here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Assess end-device battery life</td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter findings here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="3" placeholder="Enter conclusion here..." 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">6. Recommendation</h4>
+                        <div class="form-group">
+                            <label for="recommendationTextarea">Provide recommendations for optimizing network deployment, selecting appropriate equipment, and mitigating potential challenges:</label>
+                            <textarea id="recommendationTextarea" class="form-control" rows="6" placeholder="Enter recommendations here..." 
+                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">7. List of Evaluation Team</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>TEQ Armada Sdn Bhd</th>
+                                        <th>Sabah Softwoods Berhad (SSB)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control mb-2" placeholder="Name" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control mb-2" placeholder="Position" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                            <input type="text" class="form-control" placeholder="Contact Information" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} readonly {% endif %}>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="text-primary">8. Supporting Evidence</h4>
+                        <div class="card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs" id="evidenceTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab">
+                                            <i class="bi bi-file-earmark-text me-2"></i>Documents
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="photos-tab" data-bs-toggle="tab" data-bs-target="#photos" type="button" role="tab">
+                                            <i class="bi bi-image me-2"></i>Photos
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="evidenceTabContent">
+                                    <!-- Documents Tab -->
+                                    <div class="tab-pane fade show active" id="documents" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label for="documentUpload" class="form-label">Upload Supporting Documents</label>
+                                            <input class="form-control" type="file" id="documentUpload" multiple accept=".pdf,.doc,.docx,.txt,.csv,.xlsx" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} disabled {% endif %}>
+                                            <small class="form-text text-muted">Allowed file types: PDF, DOC, DOCX, TXT, CSV, XLSX (Max 16MB)</small>
+                                        </div>
+                                        <div id="documentPreviewContainer" class="row">
+                                            <!-- Dynamically populated document previews will be added here -->
+                                        </div>
+                                    </div>
+
+                                    <!-- Photos Tab -->
+                                    <div class="tab-pane fade" id="photos" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label for="photoUpload" class="form-label">Upload Site Photos</label>
+                                            <input class="form-control" type="file" id="photoUpload" multiple accept="image/*" 
+                                                {% if not current_user.is_authenticated or current_user.username != 'admin' %} disabled {% endif %}>
+                                            <small class="form-text text-muted">Allowed file types: PNG, JPG, JPEG, GIF, BMP (Max 16MB)</small>
+                                        </div>
+                                        <div id="photoPreviewContainer" class="row">
+                                            <!-- Dynamically populated photo previews will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" type="button" id="saveEvidenceBtn" 
+                            {% if not current_user.is_authenticated or current_user.username != 'admin' %} disabled {% endif %}>
+                            <i class="bi bi-save me-2"></i>Save Supporting Evidence
+                        </button>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary me-2">
+                            <i class="bi bi-arrow-left me-2"></i>Back to Home
+                        </a>
+                        <button onclick="window.print()" class="btn btn-primary">
+                            <i class="bi bi-printer me-2"></i>Print Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if current_user.is_authenticated and current_user.username == 'admin' %}
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save me-2"></i>Submit Evaluation Report
+        </button>
+    </div>
+    {% endif %}
+</div>
+<!-- Existing Reports Section -->
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h4 class="card-title">Existing Evaluation Reports</h4>
+            </div>
+            <div class="card-body">
+                {% if reports %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date Created</th>
+                                    <th>Author</th>
+                                    {% if current_user.is_authenticated and current_user.username == 'admin' %}
+                                    <th>Actions</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for report in reports %}
+                                <tr>
+                                    <td>{{ report.title }}</td>
+                                    <td>{{ report.date_created.strftime('%Y-%m-%d') }}</td>
+                                    <td>{{ report.author.username }}</td>
+                                    {% if current_user.is_authenticated and current_user.username == 'admin' %}
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="#" class="btn btn-sm btn-info">View</a>
+                                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-center text-muted">No evaluation reports found.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Client-side file validation
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const documentsInput = document.getElementById('documentUpload');
+        const photosInput = document.getElementById('photoUpload');
+        const maxFileSize = 16 * 1024 * 1024; // 16 MB
+
+        // Validate document files
+        for (let file of documentsInput.files) {
+            const allowedTypes = ['application/pdf', 'application/msword', 
+                                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                                  'text/plain', 'text/csv', 
+                                  'application/vnd.ms-excel', 
+                                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+            
+            if (!allowedTypes.includes(file.type)) {
+                alert('Invalid document type: ' + file.name);
+                event.preventDefault();
+                return;
+            }
+
+            if (file.size > maxFileSize) {
+                alert('File too large: ' + file.name + '. Maximum file size is 16 MB.');
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Validate photo files
+        for (let file of photosInput.files) {
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/bmp'];
+            
+            if (!allowedTypes.includes(file.type)) {
+                alert('Invalid image type: ' + file.name);
+                event.preventDefault();
+                return;
+            }
+
+            if (file.size > maxFileSize) {
+                alert('File too large: ' + file.name + '. Maximum file size is 16 MB.');
+                event.preventDefault();
+                return;
+            }
+        }
+    });
+</script>
+{% endblock %}

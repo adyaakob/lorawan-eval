@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block title %}Sabah Malaysia Map{% endblock %}
+
+{% block styles %}
+<style>
+    .layer-switcher .btn-group {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        background-color: white;
+    }
+    .layer-switcher .btn-group .btn {
+        padding: 5px 10px;
+        margin: 0;
+    }
+    .layer-switcher .btn-group input[type="radio"] {
+        display: none;
+    }
+    .layer-switcher .btn-group label {
+        cursor: pointer;
+    }
+    .map-view-switcher {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .map-view-switcher .btn-group {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        background-color: white;
+    }
+    .map-view-switcher .btn-group .btn {
+        padding: 8px 15px;
+        margin: 0;
+    }
+    .map-view-switcher .btn-group input[type="radio"] {
+        display: none;
+    }
+    .map-view-switcher .btn-group label {
+        cursor: pointer;
+    }
+    .map-view-guide {
+        text-align: center;
+        color: #6c757d;
+        margin-top: 10px;
+        font-size: 0.9em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4 align-items-center">
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+        <div class="col">
+            <h1>Real-time Tracking Map</h1>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div id="map" style="height: 600px;"></div>
+            
+            <div class="map-view-switcher">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-primary active">
+                        <input type="radio" name="mapType" value="standard" checked> Standard View
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="radio" name="mapType" value="satellite"> Satellite View
+                    </label>
+                </div>
+            </div>
+            <div class="map-view-guide">
+                Switch between standard map and satellite imagery to explore estate locations
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h3 class="mb-3">Estate Locations</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Estate Name</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Region</th>
+                            <th>Officer In-Charge</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.720694, 4.511972]">Cenderamata Oil Palm Estate</a></td>
+                            <td>4° 30' 43.1" N</td>
+                            <td>117° 43' 14.5" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Harezam Ahmad</td>
+                            <td>53 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.720694, 4.511972]">Dumpas Oil Palm Estate</a></td>
+                            <td>4° 30' 43.1" N</td>
+                            <td>117° 43' 14.5" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Amirudin Hamid</td>
+                            <td>53 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.697833, 4.660639]">Sungai Indit Oil Palm Estate</a></td>
+                            <td>4° 39' 38.3" N</td>
+                            <td>117° 41' 52.2" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Donald Lutam</td>
+                            <td>70 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.509333, 4.526500]">Banita Oil Palm Estate</a></td>
+                            <td>4° 31' 34.2" N</td>
+                            <td>117° 30' 33.6" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Jali Hj. Adul</td>
+                            <td>65 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.509333, 4.526500]">Kapilit Oil Palm Estate</a></td>
+                            <td>4° 31' 34.2" N</td>
+                            <td>117° 30' 33.6" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Rashid Hussein</td>
+                            <td>79 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.492083, 4.531611]">Sungai Tiagau Oil Palm Estate</a></td>
+                            <td>4° 31' 53.4" N</td>
+                            <td>117° 29' 31.5" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Jakson Matanggal</td>
+                            <td>82 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.483028, 4.556444]">Mawang Oil Palm Estate</a></td>
+                            <td>4° 33' 23.0" N</td>
+                            <td>117° 28' 59.0" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Hafiz Idris</td>
+                            <td>83 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.449611, 4.478444]">Kumansi Oil Palm Estate</a></td>
+                            <td>4° 27' 58.6" N</td>
+                            <td>117° 26' 58.3" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Bridger K. Thomas</td>
+                            <td>91 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.494528, 4.460528]">Bukit Tukok Oil Palm Estate</a></td>
+                            <td>4° 27' 37.7" N</td>
+                            <td>117° 29' 40.3" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Masiara Marsuki</td>
+                            <td>87 ha</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="estate-link" data-coords="[117.524139, 4.503361]">Kapilit Palm Oil Mill</a></td>
+                            <td>4° 30' 12.1" N</td>
+                            <td>117° 31' 27.3" E</td>
+                            <td>Eastern Sabah</td>
+                            <td>Jeffry Ahmad</td>
+                            <td>80 ha</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.1.0/ol.css">
+<script src="https://cdn.jsdelivr.net/npm/ol@v8.1.0/dist/ol.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Coordinates for Sabah, Malaysia (centered)
+    const sabahCenter = [117.5, 4.5];
+
+    // Estate locations with names
+    const estateLocations = [
+        // Previous estates
+        { 
+            name: 'Cenderamata Oil Palm Estate', 
+            coords: [117.720694, 4.511972],
+            officerInCharge: 'Harezam Ahmad',
+            size: '53 ha'
+        },
+        { 
+            name: 'Dumpas Oil Palm Estate', 
+            coords: [117.720694, 4.511972],
+            officerInCharge: 'Amirudin Hamid',
+            size: '53 ha'
+        },
+        { 
+            name: 'Sungai Indit Oil Palm Estate', 
+            coords: [117.697833, 4.660639],
+            officerInCharge: 'Donald Lutam',
+            size: '70 ha'
+        },
+        { 
+            name: 'Banita Oil Palm Estate', 
+            coords: [117.509333, 4.526500],
+            officerInCharge: 'Jali Hj. Adul',
+            size: '65 ha'
+        },
+        { 
+            name: 'Kapilit Oil Palm Estate', 
+            coords: [117.509333, 4.526500],
+            officerInCharge: 'Rashid Hussein',
+            size: '79 ha'
+        },
+        { 
+            name: 'Sungai Tiagau Oil Palm Estate', 
+            coords: [117.492083, 4.531611],
+            officerInCharge: 'Jakson Matanggal',
+            size: '82 ha'
+        },
+        { 
+            name: 'Mawang Oil Palm Estate', 
+            coords: [117.483028, 4.556444],
+            officerInCharge: 'Hafiz Idris',
+            size: '83 ha'
+        },
+        // New estates
+        { 
+            name: 'Kumansi Oil Palm Estate', 
+            coords: [117.449611, 4.478444],
+            officerInCharge: 'Bridger K. Thomas',
+            size: '91 ha'
+        },
+        { 
+            name: 'Bukit Tukok Oil Palm Estate', 
+            coords: [117.494528, 4.460528],
+            officerInCharge: 'Masiara Marsuki',
+            size: '87 ha'
+        },
+        { 
+            name: 'Kapilit Palm Oil Mill', 
+            coords: [117.524139, 4.503361],
+            officerInCharge: 'Jeffry Ahmad',
+            size: '80 ha',
+            type: 'Palm Oil Mill'
+        }
+    ];
+
+    // Create a map view centered on the estates
+    const map = new ol.Map({
+        target: 'map',
+        layers: [
+            // Base map layer
+            new ol.layer.Tile({
+                source: new ol.source.OSM(),
+                title: 'Standard'
+            }),
+            // Satellite layer
+            new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                    attributions: 'Tiles \u00a9 Esri \u2014 Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                }),
+                title: 'Satellite',
+                visible: false
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat(sabahCenter),
+            zoom: 11  // Closer zoom to show estate details
+        })
+    });
+
+    // Layer switching logic
+    const standardLayer = map.getLayers().item(0);
+    const satelliteLayer = map.getLayers().item(1);
+    const layerInputs = document.querySelectorAll('input[name="mapType"]');
+    
+    layerInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.value === 'standard') {
+                standardLayer.setVisible(true);
+                satelliteLayer.setVisible(false);
+            } else {
+                standardLayer.setVisible(false);
+                satelliteLayer.setVisible(true);
+            }
+        });
+    });
+
+    // Create a vector source to hold estate markers
+    const vectorSource = new ol.source.Vector();
+
+    // Create markers for each estate
+    estateLocations.forEach(estate => {
+        const marker = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat(estate.coords))
+        });
+
+        // Set additional properties for the feature
+        marker.set('name', estate.name);
+        marker.set('officerInCharge', estate.officerInCharge);
+        marker.set('size', estate.size);
+
+        // Create a style for the marker
+        marker.setStyle(new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 8,
+                fill: new ol.style.Fill({ color: 'red' }),
+                stroke: new ol.style.Stroke({ color: 'black', width: 2 })
+            }),
+            text: new ol.style.Text({
+                text: estate.name,
+                offsetY: 15,
+                font: '12px Calibri,sans-serif',
+                fill: new ol.style.Fill({ color: '#000' }),
+                stroke: new ol.style.Stroke({ color: '#fff', width: 3 })
+            })
+        }));
+
+        vectorSource.addFeature(marker);
+    });
+
+    // Create a vector layer with the markers
+    const vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+    });
+
+    // Add the vector layer to the map
+    map.addLayer(vectorLayer);
+
+    // Add popup functionality
+    const popupElement = document.createElement('div');
+    popupElement.className = 'ol-popup';
+    popupElement.style.display = 'none';
+    popupElement.style.position = 'absolute';
+    popupElement.style.backgroundColor = 'white';
+    popupElement.style.border = '1px solid black';
+    popupElement.style.padding = '10px';
+    popupElement.style.borderRadius = '5px';
+    document.getElementById('map').appendChild(popupElement);
+
+    const popup = new ol.Overlay({
+        element: popupElement,
+        positioning: 'bottom-center',
+        stopEvent: false,
+        offset: [0, -10]
+    });
+    map.addOverlay(popup);
+
+    // Show popup on hover
+    map.on('pointermove', function(evt) {
+        const feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+            return feature;
+        });
+
+        if (feature) {
+            const coordinates = feature.getGeometry().getCoordinates();
+            popupElement.innerHTML = `
+                <strong>${feature.get('name')}</strong><br>
+                Officer In-Charge: ${feature.get('officerInCharge')}<br>
+                Size: ${feature.get('size')}
+            `;
+            popupElement.style.display = 'block';
+            popup.setPosition(coordinates);
+            map.getTargetElement().style.cursor = 'pointer';
+        } else {
+            popupElement.style.display = 'none';
+            popup.setPosition(undefined);
+            map.getTargetElement().style.cursor = '';
+        }
+    });
+
+    // Add click event to estate links
+    const estateLinks = document.querySelectorAll('.estate-link');
+    estateLinks.forEach(link => {
+        link.addEventListener('click', function(evt) {
+            evt.preventDefault();
+            const coords = JSON.parse(link.getAttribute('data-coords'));
+            map.getView().animate({
+                center: ol.proj.fromLonLat(coords),
+                zoom: 15
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

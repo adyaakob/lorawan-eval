@@ -1,0 +1,393 @@
+{% extends "base.html" %}
+
+{% block title %}Evaluation Procedure{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h1>Evaluation Procedure</h1>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="mb-4">Evaluation Procedure for LoRaWAN-based Real-time Worker Tracking System in Remote Oil Palm Plantations</h1>
+            
+            <p class="lead">This document outlines a comprehensive evaluation procedure for the LoRaWAN-based real-time worker tracking system proposed by TEQ Armada Sdn Bhd to Sabah Softwoods Berhad. The evaluation focuses on assessing the feasibility and performance of the system using alternative equipment due to the unavailability of the proposed devices.</p>
+
+            <section class="mb-5">
+                <h2>Evaluation Equipment</h2>
+                <ul>
+                    <li><strong>End-user devices:</strong> Dragino Tracker D LoRaWAN GPS trackers</li>
+                    <li><strong>Gateway:</strong> Dragino Outdoor Gateway DL0S86 (AS923) with 4G EC25</li>
+                    <li><strong>Tools/Equipment:</strong>
+                        <ul>
+                            <li>Laptop with LoRaWAN network server and mapping software (e.g., The Things Network with ChirpStack, with mapping software like QGIS)</li>
+                            <li>High-accuracy GPS device (e.g., Garmin GPSMAP 66i) or detailed map of the estate</li>
+                            <li>Cellular signal strength meter (e.g., RF Explorer Handheld Spectrum Analyzer) or mobile phone with field test mode</li>
+                            <li>Measuring tape or laser distance measuring equipment (e.g., Bosch GLM 50 C)</li>
+                            <li>Tools for mounting the gateway (e.g., ladder, mounting brackets, appropriate tools for the chosen mounting surface)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mb-5">
+                <h2>Test Location</h2>
+                <p>The evaluation will be conducted in <strong>one</strong> oil palm estate in Sabah, Malaysia, selected by the tester from the following list:</p>
+                <ol>
+                    <li>Mawang</li>
+                    <li>Sg Tiagau</li>
+                    <li>Bukit Tuok</li>
+                    <li>Kumani</li>
+                    <li>Kapilit</li>
+                    <li>Sg Indit</li>
+                    <li>Banita</li>
+                    <li>Cenderamata</li>
+                    <li>Dumpas</li>
+                </ol>
+                <div class="form-group">
+                    <label for="selectedEstate"><strong>Selected Estate:</strong></label>
+                    <input type="text" class="form-control" id="selectedEstate" placeholder="Enter the name of the selected estate">
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Test 1: LoRaWAN Range and Coverage</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Objective</h3>
+                        <p>To determine the effective range of the LoRaWAN network in the oil palm plantation environment.</p>
+                        
+                        <h3>Procedure</h3>
+                        <ol>
+                            <li>Deploy the Dragino DL0S86 gateway at a central location within the selected estate. Record the gateway's GPS coordinates.</li>
+                            <li>Starting with the tracker device near the gateway, record the Received Signal Strength Indicator (RSSI) and any packet loss.</li>
+                            <li>Place Dragino Tracker D devices at various distances from the gateway (e.g., 100m, 500m, 1km, 2km, 5km) in different directions. Record the GPS coordinates of each tracker.</li>
+                            <li>Vary the terrain and vegetation density between the gateway and tracker devices.</li>
+                            <li>For each location, record the signal strength (RSSI) and packet loss. Note the Spreading Factor (SF) used for communication.</li>
+                            <li>Observe and record the time it takes for data to be transmitted from the tracker to the gateway (latency).</li>
+                        </ol>
+
+                        <h4>Form (Part 1)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>Tracker ID</th>
+                                        <th>Distance to Gateway (m)</th>
+                                        <th>Tracker GPS Coordinates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 6) %}
+                                    <tr>
+                                        <td>1.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Form (Part 2)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>RSSI (dBm)</th>
+                                        <th>SF</th>
+                                        <th>Packet Loss (%)</th>
+                                        <th>Latency (s)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 11) %}
+                                    <tr>
+                                        <td>1.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Test 2: GPS Performance Under Canopy</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Objective</h3>
+                        <p>To evaluate the accuracy and reliability of GPS positioning under the dense canopy of oil palm trees.</p>
+
+                        <h3>Procedure</h3>
+                        <ol>
+                            <li>Place Dragino Tracker D devices at different locations under the canopy with varying densities.</li>
+                            <li>Record the GPS coordinates obtained by the tracker devices.</li>
+                            <li>Compare the recorded coordinates with the actual coordinates.</li>
+                            <li>Calculate the positional error and analyze variations in accuracy.</li>
+                            <li>Repeat the test at different times of the day.</li>
+                        </ol>
+
+                        <h4>Form (Part 1)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>Tracker ID</th>
+                                        <th>Canopy Density</th>
+                                        <th>Recorded Coordinates</th>
+                                        <th>Actual Coordinates</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 6) %}
+                                    <tr>
+                                        <td>2.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Form (Part 2)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>Positional Error (m)</th>
+                                        <th>Time of Day</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 11) %}
+                                    <tr>
+                                        <td>2.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Test 3: Device Performance and Battery Life</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Objective</h3>
+                        <p>To assess the performance of the Dragino Tracker D in terms of data transmission, battery life, and overall functionality.</p>
+
+                        <h3>Procedure</h3>
+                        <ol>
+                            <li>Fully charge the battery of each Dragino Tracker D device.</li>
+                            <li>Configure the devices to transmit data at different intervals.</li>
+                            <li>Monitor and record data transmission rate and packet loss.</li>
+                            <li>Record battery depletion time for each interval.</li>
+                            <li>Document any functionality issues.</li>
+                        </ol>
+
+                        <h4>Form</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>Tracker ID</th>
+                                        <th>Data Transmission Interval (min)</th>
+                                        <th>Data Transmission Rate</th>
+                                        <th>Packet Loss (%)</th>
+                                        <th>Battery Life (hours)</th>
+                                        <th>Functional Issues</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 4) %}
+                                    <tr>
+                                        <td>3.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Test 4: Cellular Signal Strength</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Objective</h3>
+                        <p>To measure cellular signal strength across the selected estate to identify optimal gateway placement for reliable backhaul connectivity.</p>
+
+                        <h3>Procedure</h3>
+                        <ol>
+                            <li>Measure signal strength at various locations.</li>
+                            <li>Record signal strength and network provider data.</li>
+                            <li>Identify areas with weak coverage.</li>
+                            <li>Analyze data for optimal gateway placement.</li>
+                        </ol>
+
+                        <h4>Form (Part 1)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>Location Coordinates</th>
+                                        <th>CelcomDigi</th>
+                                        <th>Maxis</th>
+                                        <th>U Mobile</th>
+                                        <th>unifi</th>
+                                        <th>Yes 4G</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 6) %}
+                                    <tr>
+                                        <td>4.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>Form (Part 2)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Test Number</th>
+                                        <th>RSRP (dBm)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(1, 11) %}
+                                    <tr>
+                                        <td>4.{{ i }}</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Data Analysis and Reporting</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Analysis Factors</h3>
+                        <ul>
+                            <li><strong>LoRaWAN coverage and signal strength:</strong> Network reliability, impact of terrain and vegetation</li>
+                            <li><strong>GPS accuracy under canopy:</strong> Location tracking accuracy variations</li>
+                            <li><strong>Device performance and battery life:</strong> Functionality and power consumption analysis</li>
+                            <li><strong>Cellular signal strength:</strong> Coverage analysis for backhaul connectivity</li>
+                        </ul>
+
+                        <h3>Report Components</h3>
+                        <ul>
+                            <li><strong>Executive summary:</strong> Overview of objectives and findings</li>
+                            <li><strong>Detailed test results:</strong> Data presentation with visualizations</li>
+                            <li><strong>Analysis and discussion:</strong> Result interpretation and implications</li>
+                            <li><strong>Recommendations:</strong> System optimization guidelines</li>
+                            <li><strong>Conclusion:</strong> Overall system feasibility assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>Compromises and Limitations</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>GPS Accuracy:</strong> Differences in frequency band reception and anti-jamming capabilities</li>
+                            <li><strong>Feature Set:</strong> Additional features affecting performance comparisons</li>
+                            <li><strong>Ruggedness:</strong> Varying specifications for environmental protection</li>
+                            <li><strong>Power Source:</strong> Different power supply requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h2>References</h2>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <ol>
+                            <li><a href="https://wiki.dragino.com/index.php?title=TrackerD_-_LoRaWAN_Tracker_User_Manual">TrackerD -- LoRaWAN Tracker User Manual - Dragino Wiki</a></li>
+                            <li><a href="https://www.dragino.com/products/lora-gateway/item/108-dlos8.html">DLOS8 Outdoor LoRaWAN Gateway - Dragino</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Enable saving of form data
+    const tables = document.querySelectorAll('.table');
+    tables.forEach(table => {
+        const cells = table.querySelectorAll('[contenteditable="true"]');
+        cells.forEach(cell => {
+            cell.addEventListener('blur', function() {
+                // Here you can add code to save the data
+                console.log('Cell updated:', this.textContent);
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

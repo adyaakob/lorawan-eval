@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Evaluation Plan{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h1>Evaluation Plan</h1>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">Evaluation of LoRaWAN-based Real-time Worker Tracking System in Remote Oil Palm Plantations</h1>
+                
+                <p class="lead">This report outlines the evaluation plan for a LoRaWAN-based real-time worker tracking system proposed by TEQ Armada Sdn Bhd to Sabah Softwoods Berhad (softwood.com.my). It details the project background, user requirements, proposed system architecture, and the rationale for selecting specific devices for the evaluation.</p>
+
+                <section class="mb-5">
+                    <h2>Project Background</h2>
+                    <p>This project aims to enhance worker safety and optimize operational efficiency in Sabah Softwoods Berhad's oil palm plantations. Traditional tracking methods are inadequate due to the vast, densely vegetated areas and limitations of GPS and cellular signals under the palm canopy. This LoRaWAN-based system seeks to overcome these challenges by providing real-time worker location data and reliable communication, even in areas with limited cellular coverage.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Key Requirements</h2>
+                    <ul>
+                        <li><strong>Real-time tracking:</strong> Continuous monitoring of 4,500 workers across nine estates (Mawang, Sg Tiagau, Bukit Tuok, Kumani, Kapilit, Sg Indit, Banita, Cenderamata, and Dumpas).</li>
+                        <li><strong>Technology:</strong> Utilize LoRaWAN technology for its long-range coverage (up to 10km in rural areas), low power consumption, and ability to penetrate dense foliage.</li>
+                        <li><strong>Infrastructure:</strong> Deploy solar-powered LoRaWAN gateways for sustainable operation.</li>
+                        <li><strong>Integration:</strong> Ensure seamless integration with existing HQ management systems for data analysis and reporting.</li>
+                        <li><strong>Overcome cellular limitations:</strong> Address limited cellular coverage in Sabah's remote areas by providing reliable communication through the LoRaWAN network.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>System Purpose</h2>
+                    <ul>
+                        <li><strong>Enhanced safety:</strong> Real-time location tracking enables immediate response to emergencies and accidents.</li>
+                        <li><strong>Improved response times:</strong> Faster response to worker distress calls and incidents.</li>
+                        <li><strong>Optimized workforce management:</strong> Efficient allocation of workers and improved task management.</li>
+                        <li><strong>Data-driven insights:</strong> Generate data for performance analysis, identifying areas for improvement in safety and efficiency.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Proposed System</h2>
+                    <ul>
+                        <li><strong>End-user devices:</strong> HKT GT-100 LoRaWAN GPS trackers</li>
+                        <li><strong>Gateway:</strong> Milesight SG50 LoRaWAN gateway</li>
+                        <li><strong>Network Server:</strong> A LoRaWAN network server for managing devices and data</li>
+                        <li><strong>Application Server:</strong> A platform for visualizing worker location data, generating reports, and triggering alerts</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Equipment for Evaluation</h2>
+                    <p>Due to the unavailability of the proposed HKT GT-100 trackers for immediate field evaluation, alternative devices will be used to gather preliminary data and assess the feasibility of the system. The following equipment will be used for the evaluation:</p>
+                    <ul>
+                        <li><strong>End-user devices:</strong> Dragino Tracker D LoRaWAN GPS trackers</li>
+                        <li><strong>Gateway:</strong> Dragino Outdoor Gateway DL0S86 (AS923) with 4G EC25</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Compromises with Evaluation Equipment</h2>
+                    <ul>
+                        <li><strong>GPS Accuracy:</strong> The HKT GT-100 may offer better accuracy due to its dual-frequency band reception (L1 and L5) and anti-jamming capabilities. The Dragino Tracker D relies solely on GPS and BLE positioning.</li>
+                        <li><strong>Feature Set:</strong> The Dragino Tracker D includes additional features like Wi-Fi, Bluetooth 4.2, motion detection, and temperature/humidity sensors, which are not present in the HKT GT-100. These differences could affect battery life and performance comparisons.</li>
+                        <li><strong>Ruggedness:</strong> The HKT GT-100 has an IP67 waterproof rating, while the Dragino Tracker D's ruggedness specifications are not explicitly stated.</li>
+                        <li><strong>Power Source:</strong> The Milesight SG50 is designed for solar power with battery backup, while the Dragino DL0S86 relies on a 5V, 2A DC power supply.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Key Characteristics/Specifications</h2>
+                    <h3>End-user Devices</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>HKT GT-100</th>
+                                    <th>Dragino Tracker D</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Positioning Technology</td>
+                                    <td>GPS (L1 & L5)</td>
+                                    <td>GPS</td>
+                                </tr>
+                                <tr>
+                                    <td>Ruggedness</td>
+                                    <td>IP67</td>
+                                    <td>Not specified</td>
+                                </tr>
+                                <tr>
+                                    <td>Battery Life</td>
+                                    <td>1000 mAh Li-ion</td>
+                                    <td>1000 mAh Li-ion</td>
+                                </tr>
+                                <tr>
+                                    <td>Extra Features</td>
+                                    <td>Bluetooth 4.0</td>
+                                    <td>Wi-Fi, Bluetooth 4.2, Motion Detection, Temperature/Humidity Sensors</td>
+                                </tr>
+                                <tr>
+                                    <td>Dimensions</td>
+                                    <td>100 x 33 x 20 mm</td>
+                                    <td>85 x 48 x 15 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Operating Temperature</td>
+                                    <td>-20°C to 65°C</td>
+                                    <td>-40°C to 60°C</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="mt-4">Gateways</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Milesight SG50</th>
+                                    <th>Dragino DL0S86 (AS923) with 4G EC25</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ingress Protection</td>
+                                    <td>IP67</td>
+                                    <td>Not specified</td>
+                                </tr>
+                                <tr>
+                                    <td>Power Source</td>
+                                    <td>Solar/DC/Battery</td>
+                                    <td>5V, 2A DC</td>
+                                </tr>
+                                <tr>
+                                    <td>Operating Temperature</td>
+                                    <td>-30°C to +70°C</td>
+                                    <td>-20°C to 70°C</td>
+                                </tr>
+                                <tr>
+                                    <td>Antenna</td>
+                                    <td>External</td>
+                                    <td>Not specified</td>
+                                </tr>
+                                <tr>
+                                    <td>Channels</td>
+                                    <td>8 (Half-duplex)</td>
+                                    <td>Not specified</td>
+                                </tr>
+                                <tr>
+                                    <td>Backhaul</td>
+                                    <td>4G LTE (CAT 1)/GSM</td>
+                                    <td>4G LTE</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2>8-Channel Parallel Processing of Milesight SG50</h2>
+                    <p>The Milesight SG50 gateway supports 8-channel parallel processing, enabling it to handle a higher volume of data and support more than 2,000 end-node connections simultaneously. This feature is crucial for the proposed worker tracking system, as it needs to manage a large number of devices (4,500) across the nine estates. The 8-channel capacity ensures efficient data transmission and minimizes potential bottlenecks in the network.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Rationale for Selecting Evaluation Equipment</h2>
+                    <h3>Dragino Tracker D:</h3>
+                    <ul>
+                        <li><strong>LoRaWAN compatibility:</strong> Supports LoRaWAN, allowing for assessment of network coverage and signal strength in the plantation environment.</li>
+                        <li><strong>GPS functionality:</strong> Enables evaluation of GPS performance under canopy, a critical requirement for the project.</li>
+                        <li><strong>Open-source nature:</strong> Allows for potential customization and flexibility in testing different configurations.</li>
+                    </ul>
+
+                    <h3>Dragino DL0S86 Gateway:</h3>
+                    <ul>
+                        <li><strong>LoRaWAN support:</strong> Provides LoRaWAN connectivity for the Dragino Tracker D devices.</li>
+                        <li><strong>4G backhaul:</strong> Offers cellular connectivity for data backhaul in remote locations.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Evaluation Objectives</h2>
+                    <ul>
+                        <li><strong>Assess LoRaWAN range and coverage:</strong> Determine the effective range of the LoRaWAN network in the oil palm plantation environment.</li>
+                        <li><strong>Evaluate GPS performance under canopy:</strong> Analyze the accuracy and reliability of GPS positioning under the dense canopy of oil palm trees.</li>
+                        <li><strong>Gather data on device performance:</strong> Collect information on device battery life, data transmission rates, and overall functionality.</li>
+                        <li><strong>Evaluate cellular signal strength:</strong> Measure cellular signal strength across the nine estates.</li>
+                        <li><strong>Assess end-device battery life:</strong> Determine the battery life under typical usage conditions.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Geographical Considerations</h2>
+                    <ul>
+                        <li><strong>Terrain:</strong> Varied terrain including hilly areas, valleys, and dense foliage affecting signal propagation.</li>
+                        <li><strong>Vegetation:</strong> Dense canopy of oil palm trees impacting GPS accuracy and LoRaWAN signal strength.</li>
+                        <li><strong>Cellular Coverage:</strong> Limited cellular signal strength requiring careful gateway placement.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Expected Outcomes</h2>
+                    <ul>
+                        <li><strong>Optimize network deployment:</strong> Determine optimal gateway placement for complete coverage.</li>
+                        <li><strong>Assess device suitability:</strong> Evaluate performance and extrapolate findings.</li>
+                        <li><strong>Identify potential challenges:</strong> Address signal propagation and environmental factors.</li>
+                        <li><strong>Validate LoRaWAN's effectiveness:</strong> Confirm system viability in targeted plantations.</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>References</h2>
+                    <ol>
+                        <li>Recommendation ITU-R P.1238-10: Propagation data and prediction methods for the planning of indoor radiocommunication systems and radio local area networks in the frequency range 300 MHz to 450 GHz</li>
+                        <li>LoRaWAN® Specification v1.0.4</li>
+                        <li>3GPP Technical Specification 36.213: Physical layer procedures (Release 16)</li>
+                    </ol>
+                    <h3>Online References</h3>
+                    <ol>
+                        <li><a href="https://www.itu.int/rec/R-REC-P.1238" target="_blank">ITU-R P.1238 Recommendation</a></li>
+                        <li><a href="https://lora-alliance.org/resource_hub/lorawan-specification-v1-0-4/" target="_blank">LoRaWAN Specification</a></li>
+                        <li><a href="https://www.3gpp.org/ftp/Specs/archive/36_series/36.213/" target="_blank">3GPP Technical Specification 36.213</a></li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">LoRaWAN Worker Tracking System Evaluation</h1>
+            
+            <div class="alert alert-primary" role="alert">
+                <h4 class="alert-heading">Project Overview</h4>
+                <p class="mb-0">A comprehensive evaluation of a LoRaWAN-based real-time worker tracking system for remote oil palm plantations in Sabah, Malaysia.</p>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Project Objectives</h5>
+                    <ul class="text-start">
+                        <li>Assess LoRaWAN network coverage in dense plantation environments</li>
+                        <li>Evaluate GPS tracking accuracy under tree canopies</li>
+                        <li>Test device performance and battery life</li>
+                        <li>Analyze cellular signal strength for backhaul connectivity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 bg-light border border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-map"></i>
+                                Real-time Tracking Map
+                            </h5>
+                            <p class="card-text">Monitor worker locations and device status across all estates in real-time.</p>
+                            <a href="{{ url_for('map_view') }}" class="btn btn-outline-primary">View Map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100 bg-light border border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-clipboard-data"></i>
+                                Evaluation Plan
+                            </h5>
+                            <p class="card-text">Comprehensive strategy for system assessment and testing.</p>
+                            <a href="{{ url_for('evaluation_plan') }}" class="btn btn-outline-primary">View Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 bg-light border border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-list-check"></i>
+                                Evaluation Procedure
+                            </h5>
+                            <p class="card-text">Detailed methodology for conducting system tests.</p>
+                            <a href="{{ url_for('evaluation_procedure') }}" class="btn btn-outline-primary">View Procedure</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 bg-light border border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-file-earmark-text"></i>
+                                Evaluation Report
+                            </h5>
+                            <p class="card-text">Results and findings from the system evaluation.</p>
+                            <a href="{{ url_for('evaluation_report') }}" class="btn btn-outline-primary">View Report</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 bg-light border border-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-people"></i>
+                                Evaluation Team
+                            </h5>
+                            <p class="card-text">Team composition and roles for the LoRaWAN system evaluation.</p>
+                            <a href="{{ url_for('evaluation_team') }}" class="btn btn-outline-primary">View Team</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-clipboard-check text-primary"></i>
+                                Pre-Site Visit Checklist
+                            </h5>
+                            <p class="card-text">Essential preparation guide for on-site system evaluation.</p>
+                            <a href="{{ url_for('pre_site_visit_checklist') }}" class="btn btn-primary">View Checklist</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-success">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-calendar text-success"></i>
+                                Project Implementation Timeline
+                            </h5>
+                            <p class="card-text">Detailed timeline for implementing the LoRaWAN-based worker tracking system evaluation.</p>
+                            <a href="{{ url_for('project_implementation_timeline') }}" class="btn btn-success">View Timeline</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-danger bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-currency-exchange text-white"></i>
+                                Project Cost Estimation
+                            </h5>
+                            <p class="card-text">Detailed cost estimation for the LoRaWAN-based worker tracking system evaluation.</p>
+                            <a href="{{ url_for('project_cost_estimation') }}" class="btn btn-light">View Cost Estimation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 border-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-calculator"></i>
+                                Estate Areas Calculation
+                            </h5>
+                            <p class="card-text">Detailed calculation of plantation areas for tracking system deployment.</p>
+                            <a href="{{ url_for('estate_areas') }}" class="btn btn-outline-primary">View Calculations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

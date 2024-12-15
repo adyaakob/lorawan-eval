@@ -1,0 +1,434 @@
+{% extends "base.html" %}
+
+{% block title %}Project Cost Estimation{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h1 class="d-none d-md-block">Project Cost Estimation</h1>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">
+                        <i class="bi bi-currency-exchange me-2"></i>
+                        Project Cost Estimation: LoRaWAN Worker Tracking System
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <strong>Evaluation Context:</strong> Comprehensive cost breakdown for LoRaWAN-based worker tracking system evaluation in Sabah, Malaysia
+                    </div>
+
+                    <div class="table-responsive">
+                        <h4 class="mt-4">1. Equipment Costs</h4>
+                        <table class="table table-striped table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price (RM)</th>
+                                    <th>Total (RM)</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Dragino Tracker D LoRaWAN GPS Tracker</td>
+                                    <td>5</td>
+                                    <td>315</td>
+                                    <td>1,575</td>
+                                    <td>Includes potential buffer for spares</td>
+                                </tr>
+                                <tr>
+                                    <td>Dragino Outdoor Gateway DL0S86 (AS923)</td>
+                                    <td>1</td>
+                                    <td>1,400</td>
+                                    <td>1,400</td>
+                                    <td>With 4G EC25</td>
+                                </tr>
+                                <!-- Add other equipment rows similarly -->
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-primary">
+                                    <td colspan="3"><strong>Subtotal (Equipment)</strong></td>
+                                    <td><strong>13,525</strong></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <h4 class="mt-4">2. Travel and Accommodation</h4>
+                        <table class="table table-striped table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Details</th>
+                                    <th>Unit Cost (RM)</th>
+                                    <th>Total (RM)</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Round-trip airfare</td>
+                                    <td>3 engineers</td>
+                                    <td>1,000</td>
+                                    <td>3,000</td>
+                                    <td>Kuala Lumpur - Kota Kinabalu</td>
+                                </tr>
+                                <!-- Add other travel rows similarly -->
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-primary">
+                                    <td colspan="3"><strong>Subtotal (Travel and Accommodation)</strong></td>
+                                    <td><strong>20,500</strong></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <h4 class="mt-4">3. Total Project Cost</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Subtotal (RM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Equipment</td>
+                                    <td>13,525</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel and Accommodation</td>
+                                    <td>20,500</td>
+                                </tr>
+                                <tr>
+                                    <td>Personnel</td>
+                                    <td>6,300</td>
+                                </tr>
+                                <tr>
+                                    <td>Risks</td>
+                                    <td>2,000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-primary">
+                                <tr>
+                                    <td><strong>Grand Total</strong></td>
+                                    <td><strong>42,325</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="card mt-4 bg-light">
+                        <div class="card-body">
+                            <h4 class="card-title">Cost Optimization Strategies</h4>
+                            <ul>
+                                <li>Reduce Dragino Tracker D quantity from 5 to 3</li>
+                                <li>Utilize existing equipment where possible</li>
+                            </ul>
+                            <p class="text-muted">
+                                <strong>Potential Cost Reduction:</strong> Up to RM8,630
+                                <br>
+                                <strong>Optimized Total Cost:</strong> RM33,695
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Cost Estimation: LoRaWAN-based Worker Tracking System Evaluation in Sabah, Malaysia</h5>
+                            <p>This report provides a detailed cost estimation for the evaluation of a LoRaWAN-based worker tracking system in Sabah, Malaysia. The evaluation will be conducted by TEQ Armada Sdn Bhd for Sabah Softwoods Berhad (SSB).</p>
+                            <h6>Assumptions</h6>
+                            <ul>
+                                <li>Three engineers from TEQ Armada will conduct the evaluation.</li>
+                                <li>The evaluation will be conducted in one selected oil palm estate in Sabah.</li>
+                                <li>All equipment will be hand-carried by the evaluation team.</li>
+                                <li>The evaluation duration in Sabah is two weeks.</li>
+                                <li>Costs are in Malaysian Ringgit (RM).</li>
+                                <li>Exchange rate as of December 15, 2024: 1 USD = 4.40 MYR (for illustrative purposes)</li>
+                                <li>SSB will provide a second 4x4 vehicle for increased logistical support and personnel transport.</li>
+                                <li>Personnel insurance is already covered in employee Terms and Conditions.</li>
+                            </ul>
+                            <h6>1. Equipment Costs</h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price (RM)</th>
+                                        <th>Total (RM)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dragino Tracker D LoRaWAN GPS Tracker</td>
+                                        <td>5</td>
+                                        <td>315</td>
+                                        <td>1,575</td>
+                                        <td>Includes potential buffer for spares</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dragino Outdoor Gateway DL0S86 (AS923) with 4G EC25</td>
+                                        <td>1</td>
+                                        <td>1,400 (estimated)</td>
+                                        <td>1,400</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Laptop with LoRaWAN network server and mapping software</td>
+                                        <td>1</td>
+                                        <td>5,000 (estimated)</td>
+                                        <td>5,000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>High-accuracy GPS device</td>
+                                        <td>1</td>
+                                        <td>3,000 (estimated)</td>
+                                        <td>3,000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cellular signal strength meter</td>
+                                        <td>1</td>
+                                        <td>1,500 (estimated)</td>
+                                        <td>1,500</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Measuring tape or laser distance measuring equipment</td>
+                                        <td>1</td>
+                                        <td>200 (estimated)</td>
+                                        <td>200</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tools for mounting the gateway</td>
+                                        <td></td>
+                                        <td>500 (estimated)</td>
+                                        <td>500</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Battery for Gateway</td>
+                                        <td>1</td>
+                                        <td>500 (estimated)</td>
+                                        <td>500</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>First-aid kit</td>
+                                        <td>1</td>
+                                        <td>100 (estimated)</td>
+                                        <td>100</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prepaid SIM cards</td>
+                                        <td>5</td>
+                                        <td>30</td>
+                                        <td>150</td>
+                                        <td>Celcom, Digi, Maxis, U Mobile, unifi</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Subtotal (Equipment)</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>13,525</strong></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h6>2. Travel and Accommodation</h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Details</th>
+                                        <th>Unit Cost (RM)</th>
+                                        <th>Total (RM)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Round-trip airfare (Kuala Lumpur - Kota Kinabalu)</td>
+                                        <td>3 engineers</td>
+                                        <td>1,000 (estimated)</td>
+                                        <td>3,000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Accommodation (Sabah)</td>
+                                        <td>3 engineers x 14 nights</td>
+                                        <td>300 (estimated)</td>
+                                        <td>12,600</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Local transportation (Sabah)</td>
+                                        <td>14 days</td>
+                                        <td>350 (300 + 50)</td>
+                                        <td>4,900</td>
+                                        <td>4x4 rental + petrol</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Subtotal (Travel and Accommodation)</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>20,500</strong></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h6>3. Personnel Costs</h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Details</th>
+                                        <th>Daily Rate (RM)</th>
+                                        <th>Total (RM)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Engineer daily allowance (Sabah)</td>
+                                        <td>3 engineers x 14 days</td>
+                                        <td>100</td>
+                                        <td>4,200</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project management and coordination</td>
+                                        <td>1 manager x 14 days</td>
+                                        <td>150</td>
+                                        <td>2,100</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Subtotal (Personnel)</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>6,300</strong></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h6>4. Risks</h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Total (RM)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Contingency for unforeseen expenses</td>
+                                        <td>2,000</td>
+                                        <td>Equipment malfunction, unexpected travel delays, etc.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Subtotal (Risks)</strong></td>
+                                        <td><strong>2,000</strong></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h6>5. Total Project Cost</h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Subtotal (RM)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Equipment</td>
+                                        <td>13,525</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Travel and Accommodation</td>
+                                        <td>20,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Personnel</td>
+                                        <td>6,300</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Risks</td>
+                                        <td>2,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Grand Total</strong></td>
+                                        <td><strong>42,325</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h6>Cost Optimization Notes</h6>
+                            <p>The total project cost can be optimized by considering the following:</p>
+                            <ol>
+                                <li><strong>Reduced Tracker Quantity:</strong> Using only three Dragino Tracker D devices instead of five can reduce the equipment cost by RM630.</li>
+                                <li><strong>Existing Equipment:</strong> If a suitable laptop and high-accuracy GPS device are already available, the equipment cost can be further reduced by RM8,000. Additionally, if the mapping software can be loaned from the supplier, this eliminates the need to purchase a license.</li>
+                            </ol>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Cost Item</th>
+                                        <th>Original Cost (RM)</th>
+                                        <th>Optimized Cost (RM)</th>
+                                        <th>Difference (RM)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Dragino Tracker D</td>
+                                        <td>1,575</td>
+                                        <td>945</td>
+                                        <td>630</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Laptop & GPS</td>
+                                        <td>8,000</td>
+                                        <td>0</td>
+                                        <td>8,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Total</strong></td>
+                                        <td><strong>9,575</strong></td>
+                                        <td><strong>945</strong></td>
+                                        <td><strong>8,630</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>By implementing these cost optimization strategies, the total project cost can be potentially reduced by RM8,630, resulting in a final cost of RM33,695.</p>
+                            <p>This cost estimation provides a comprehensive overview of the anticipated expenses for the LoRaWAN evaluation project. It includes a detailed breakdown of equipment, travel, personnel, and risk-related costs. This information will be valuable for budgeting and resource allocation to ensure the successful completion of the evaluation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Last updated: December 15, 2024 | TEQ Armada Sdn Bhd</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

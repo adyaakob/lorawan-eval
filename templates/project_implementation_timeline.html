@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}Project Implementation Timeline{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4 align-items-center">
+        <div class="col">
+            <h1>Project Implementation Timeline</h1>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+    
+    <h1 class="mb-4">Project Implementation Timeline</h1>
+    
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">LoRaWAN Worker Tracking System Evaluation Timeline</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Activity</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Project Initiation</td>
+                        <td>Project Planning and Requirements Gathering</td>
+                        <td>Jan 15, 2024</td>
+                        <td>Jan 31, 2024</td>
+                        <td>2 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>2. Site Assessment</td>
+                        <td>Initial Estate Survey and LoRaWAN Coverage Analysis</td>
+                        <td>Feb 1, 2024</td>
+                        <td>Feb 15, 2024</td>
+                        <td>2 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>3. Equipment Preparation</td>
+                        <td>Device Configuration and Testing</td>
+                        <td>Feb 16, 2024</td>
+                        <td>Feb 29, 2024</td>
+                        <td>2 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>4. Field Deployment</td>
+                        <td>Initial Device Deployment and Monitoring</td>
+                        <td>Mar 1, 2024</td>
+                        <td>Mar 31, 2024</td>
+                        <td>4 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>5. Data Collection</td>
+                        <td>Performance Metrics and Signal Strength Analysis</td>
+                        <td>Apr 1, 2024</td>
+                        <td>Apr 30, 2024</td>
+                        <td>4 weeks</td>
+                    </tr>
+                    <tr>
+                        <td>6. Analysis and Reporting</td>
+                        <td>Data Processing and Evaluation Report Preparation</td>
+                        <td>May 1, 2024</td>
+                        <td>May 31, 2024</td>
+                        <td>4 weeks</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Project Milestones</h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Milestone 1:</strong> Complete site assessment and initial LoRaWAN coverage mapping
+                </li>
+                <li class="list-group-item">
+                    <strong>Milestone 2:</strong> Successfully deploy tracking devices across selected estates
+                </li>
+                <li class="list-group-item">
+                    <strong>Milestone 3:</strong> Collect comprehensive performance data
+                </li>
+                <li class="list-group-item">
+                    <strong>Milestone 4:</strong> Finalize evaluation report with key insights and recommendations
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Project Implementation Timeline: LoRaWAN-based Worker Tracking System Evaluation in Sabah, Malaysia</h5>
+            <p>This timeline outlines the key activities and estimated durations for implementing the evaluation of a LoRaWAN-based worker tracking system in an oil palm plantation in Sabah, Malaysia. The evaluation aims to assess the feasibility and effectiveness of using LoRaWAN technology for real-time worker tracking in this unique environment.</p>
+            <h6>Key References</h6>
+            <ul>
+                <li>Evaluation Plan</li>
+                <li>Evaluation Procedure</li>
+                <li>Pre-Site Visit Checklist</li>
+            </ul>
+            <h6>Assumptions</h6>
+            <ul>
+                <li>Visa is not required for travel within Malaysia.</li>
+                <li>All equipment will be hand-carried by the evaluation team.</li>
+                <li>Initial testing and configuration will be conducted in Kuala Lumpur before traveling to Sabah.</li>
+                <li>The evaluation will be conducted in one selected oil palm estate in Sabah.</li>
+            </ul>
+            <h6>Phase 1: Planning and Preparation (2 weeks)</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Duration</th>
+                        <th>Dependencies</th>
+                        <th>Details/Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Finalize Evaluation Plan</td>
+                        <td>1 week</td>
+                        <td>None</td>
+                        <td>Review and confirm the objectives, scope, methodology, and deliverables of the evaluation with stakeholders. Define specific test scenarios and data collection requirements. Identify potential risks and develop mitigation strategies.</td>
+                    </tr>
+                    <tr>
+                        <td>Equipment Procurement and Preparation</td>
+                        <td>1 week</td>
+                        <td>None</td>
+                        <td>Procure Dragino Tracker D devices and Dragino DLOS86 gateway. Source from local suppliers for faster delivery and potential for hands-on training. Verify equipment functionality and configure devices according to the evaluation plan.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h6>Phase 2: Initial Testing and Configuration in Kuala Lumpur (1 week)</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Duration</th>
+                        <th>Dependencies</th>
+                        <th>Details/Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Equipment Setup and Configuration</td>
+                        <td>1 day</td>
+                        <td>Equipment Procurement and Preparation</td>
+                        <td>Set up the LoRaWAN gateway and connect it to the network server. Configure the Dragino Tracker D devices and test their connectivity to the gateway.</td>
+                    </tr>
+                    <tr>
+                        <td>Initial Range and Performance Tests</td>
+                        <td>3 days</td>
+                        <td>Equipment Setup and Configuration</td>
+                        <td>Conduct preliminary range tests in an open area to establish baseline performance. Evaluate GPS accuracy and data transmission capabilities of the tracker devices. Fine-tune device configurations and network settings as needed.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h6>Phase 3: On-Site Evaluation in Sabah (3 weeks)</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Duration</th>
+                        <th>Dependencies</th>
+                        <th>Details/Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Travel to Sabah and Site Setup</td>
+                        <td>2 days</td>
+                        <td>Initial Testing and Configuration in Kuala Lumpur</td>
+                        <td>Travel to the selected estate in Sabah. Set up the LoRaWAN gateway and tracking devices on-site.</td>
+                    </tr>
+                    <tr>
+                        <td>On-Site Testing and Data Collection</td>
+                        <td>2 weeks</td>
+                        <td>Travel to Sabah and Site Setup</td>
+                        <td>Conduct comprehensive testing and data collection on-site. Monitor device performance and network coverage.</td>
+                    </tr>
+                    <tr>
+                        <td>Data Collection and Backup</td>
+                        <td>3 days</td>
+                        <td>On-Site Testing and Data Collection</td>
+                        <td>Ensure all collected data is backed up securely. Prepare data for analysis.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h6>Phase 4: Data Analysis and Reporting (1.5 weeks)</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Duration</th>
+                        <th>Dependencies</th>
+                        <th>Details/Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Analysis and Interpretation</td>
+                        <td>1.5 weeks</td>
+                        <td>Data Collection and Backup</td>
+                        <td>Analyze LoRaWAN range test data, GPS accuracy data, device performance data, and cellular signal strength data. Calculate packet loss, data transmission rates, and latency. Identify trends, patterns, and key findings.</td>
+                    </tr>
+                    <tr>
+                        <td>Report Writing</td>
+                        <td>1 week</td>
+                        <td>Data Analysis and Interpretation</td>
+                        <td>Prepare a comprehensive evaluation report documenting the methodology, results, and analysis. Include recommendations and conclusions based on the evaluation findings.</td>
+                    </tr>
+                    <tr>
+                        <td>Report Review and Finalization</td>
+                        <td>0.5 weeks</td>
+                        <td>Report Writing</td>
+                        <td>Review the report with stakeholders and incorporate feedback. Finalize the report and submit it to the client.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h6>Total Project Duration: 7 weeks</h6>
+            <p>This timeline provides a high-level overview of the project implementation. The actual durations of individual activities may vary depending on unforeseen circumstances and on-site conditions. Regular communication and collaboration with stakeholders will be crucial throughout the project to ensure its successful completion.</p>
+            <h6>Critical Milestones</h6>
+            <ul>
+                <li>Finalization of the evaluation plan.</li>
+                <li>Completion of equipment procurement and configuration.</li>
+                <li>Successful initial testing in Kuala Lumpur.</li>
+                <li>Completion of on-site evaluation in Sabah.</li>
+                <li>Submission of the final evaluation report.</li>
+            </ul>
+            <h6>Multiple Scenarios</h6>
+            <ul>
+                <li><strong>Scenario 1: Optimal Conditions:</strong> All equipment functions as expected, and testing proceeds smoothly. This scenario follows the timeline as outlined above.</li>
+                <li><strong>Scenario 2: Equipment Delays:</strong> Delays in equipment procurement or shipping may extend the overall project duration. Contingency plans should include alternative suppliers or expedited shipping options.</li>
+                <li><strong>Scenario 3: On-Site Challenges:</strong> Unforeseen challenges on-site, such as adverse weather conditions or technical difficulties, may require adjustments to the testing schedule. Flexibility and adaptability will be crucial to overcome these challenges.</li>
+                <li><strong>Scenario 4: Data Analysis Complexity:</strong> If the data analysis requires more time than anticipated, the reporting phase may be extended accordingly.</li>
+            </ul>
+            <p>This timeline, along with the considerations for multiple scenarios, provides a comprehensive framework for implementing the LoRaWAN-based worker tracking system evaluation in Sabah, Malaysia.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
