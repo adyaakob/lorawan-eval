@@ -35,7 +35,7 @@ jobs:
           path: ./public
 
   deploy:
-    environment:
+    environment: 
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
@@ -44,3 +44,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Explicitly set the branch to deploy
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
