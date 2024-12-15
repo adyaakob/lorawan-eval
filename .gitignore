@@ -8,13 +8,12 @@ venv/
 env/
 .env
 
-# IDE
+# Firebase
+firebase_service_account.json
+*.pyc
+
+# IDE and OS files
 .vscode/
 .idea/
-
-# Misc
 .DS_Store
-*.log
-
-# Firebase Service Account Key
-firebase_service_account.json
+Thumbs.db
