@@ -19,6 +19,12 @@ jobs:
         with:
           node-version: '14'
       
+      - name: Decode service account key
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT" > firebase-service-account.json
+      
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
@@ -34,4 +40,4 @@ jobs:
         with:
           args: deploy --only hosting,functions
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: firebase-service-account.json
