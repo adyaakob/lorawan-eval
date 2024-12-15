@@ -26,9 +26,10 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p public
-          cp -r templates public/
+          cp -r templates/* public/
           cp -r static public/
-          cp index.html public/ || true
+          cp index.html public/
+          cp app.py public/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
