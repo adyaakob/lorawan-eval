@@ -15,3 +15,6 @@ env/
 # Misc
 .DS_Store
 *.log
+
+# Firebase Service Account Key
+firebase_service_account.json

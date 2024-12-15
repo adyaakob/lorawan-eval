@@ -9,7 +9,11 @@ from werkzeug.utils import secure_filename
 from functools import wraps
 import json
 from sqlalchemy import inspect, text
-from estate_area_calculator import estates, estimate_estate_area
+
+# Firebase imports
+import firebase_admin
+from firebase_admin import credentials, firestore, auth
+from firebase_config import FIREBASE_CONFIG, get_firestore_client, create_user, verify_user, get_user_by_email, reset_password
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -20,6 +24,9 @@ db = SQLAlchemy(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
+# Firestore client
+firestore_db = get_firestore_client()
 
 # Database Models
 class User(UserMixin, db.Model):
@@ -481,65 +488,99 @@ def get_locations():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        email = request.form['email']
+        password = request.form['password']
         
-        user = User.query.filter_by(username=username).first()
-        
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            flash('Login successful!', 'success')
-            return redirect(url_for('index'))
-        else:
-            flash('Invalid username or password', 'danger')
+        try:
+            # Verify user credentials
+            if verify_user(email, password):
+                # Get Firebase user
+                firebase_user = get_user_by_email(email)
+                
+                # Find corresponding local user
+                local_user = User.query.filter_by(email=email).first()
+                
+                if local_user:
+                    login_user(local_user)
+                    flash('Login successful!', 'success')
+                    return redirect(url_for('index'))
+                else:
+                    flash('User not found in local database', 'danger')
+            else:
+                flash('Invalid email or password', 'danger')
+        except Exception as e:
+            flash(f'Login error: {str(e)}', 'danger')
     
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
         confirm_password = request.form.get('confirm_password')
         
-        # Basic validation
-        if not all([username, email, password, confirm_password]):
-            flash('All fields are required', 'danger')
-            return redirect(url_for('register'))
-        
+        # Password confirmation
         if password != confirm_password:
             flash('Passwords do not match', 'danger')
             return redirect(url_for('register'))
         
         # Check if user already exists
-        if User.query.filter_by(username=username).first():
-            flash('Username already exists', 'danger')
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash('Email already registered', 'danger')
             return redirect(url_for('register'))
-        
-        if User.query.filter_by(email=email).first():
-            flash('Email already exists', 'danger')
-            return redirect(url_for('register'))
-        
-        # Create new user
-        hashed_password = generate_password_hash(password)
-        new_user = User(
-            username=username, 
-            email=email, 
-            password=hashed_password
-        )
         
         try:
-            db.session.add(new_user)
-            db.session.commit()
-            flash('Registration successful! Please log in.', 'success')
-            return redirect(url_for('login'))
+            # Create user in Firebase Authentication
+            firebase_user = create_user(email, password)
+            
+            if firebase_user:
+                # Create user in local database
+                hashed_password = generate_password_hash(password)
+                new_user = User(
+                    username=username, 
+                    email=email, 
+                    password=hashed_password
+                )
+                
+                db.session.add(new_user)
+                db.session.commit()
+                
+                # Store additional user info in Firestore
+                firestore_db.collection('users').document(firebase_user.uid).set({
+                    'username': username,
+                    'email': email,
+                    'created_at': datetime.utcnow(),
+                    'role': 'user'  # Default role
+                })
+                
+                flash('Registration successful! Please log in.', 'success')
+                return redirect(url_for('login'))
+            else:
+                flash('Failed to create user in Firebase', 'danger')
+        
         except Exception as e:
             db.session.rollback()
             flash(f'Registration error: {str(e)}', 'danger')
-            return redirect(url_for('register'))
     
     return render_template('register.html')
+
+@app.route('/reset-password', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        
+        try:
+            if reset_password(email):
+                flash('Password reset link sent to your email', 'success')
+            else:
+                flash('Failed to send password reset link', 'danger')
+        except Exception as e:
+            flash(f'Password reset error: {str(e)}', 'danger')
+    
+    return render_template('reset_password.html')
 
 @app.route('/logout')
 @login_required

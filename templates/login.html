@@ -27,10 +27,10 @@
 
                     <form method="POST" action="{{ url_for('login') }}">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="email" class="form-label">Email</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -52,6 +52,9 @@
                         <p>Don't have an account? 
                             <a href="{{ url_for('register') }}" class="link-primary">Register here</a>
                         </p>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('reset_password') }}" class="text-muted">Forgot Password?</a>
                     </div>
                 </div>
             </div>
